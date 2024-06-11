@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { RouterLink, RouterView, useRoute } from 'vue-router'
+import { RouterView } from 'vue-router'
 import AppBar from './components/AppBar.vue'
 import Footer from './components/Footer.vue'
-
-const route = useRoute()
 </script>
 
 <template>
@@ -11,7 +9,7 @@ const route = useRoute()
     <AppBar />
     <v-main>
       <v-container fluid>
-        <RouterView :key="route.fullPath" />
+        <RouterView />
       </v-container>
     </v-main>
     <Footer />
