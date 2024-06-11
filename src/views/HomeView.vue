@@ -1,16 +1,20 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import Product from '../components/Product.vue'
 import ProductMenu from '../components/ProductMenu.vue'
+import { useCategoryStore } from '@/stores/category'
 
-const products = await fetch('https://fakestoreapi.com/products?limit=6').then((res) => res.json())
-console.log(products)
+const catStore = useCategoryStore()
+onMounted(async () => {
+  catStore.fetchProducts()
+})
 </script>
 
 <template>
   <v-container>
     <ProductMenu />
     <v-row>
-      <v-col cols="4" v-for="prod in products" :key="prod.id">
+      <v-col cols="3" v-for="prod in catStore.products" :key="prod.id">
         <Product :product="prod" />
       </v-col>
     </v-row>
