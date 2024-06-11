@@ -13,14 +13,13 @@ const props = defineProps(['product'])
 //     count: int;
 //   }
 // }
-console.log(props.product)
 </script>
 <template>
   <v-card>
-    <v-card-title class="my-2">
+    <v-card-title class="py-5 bg-black text-wrap">
       <v-row>
-        <v-chip size="large">
-          {{ props.product.category }}
+        <v-chip size="small">
+          {{ props.product.category.toUpperCase() }}
         </v-chip>
       </v-row>
       <v-row>

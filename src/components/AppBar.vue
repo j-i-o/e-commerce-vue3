@@ -10,7 +10,9 @@ let search = ref('')
       <v-app-bar-nav-icon icon="$vuetify"></v-app-bar-nav-icon>
     </template>
 
-    <v-app-bar-title>E-commerce</v-app-bar-title>
+    <v-app-bar-title
+      ><b class="text-uppercase" :style="{ letterSpacing: '3px' }">E-commerce</b></v-app-bar-title
+    >
     <v-row justify="end" class="mt-2">
       <v-col cols="6">
         <v-text-field
