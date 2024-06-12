@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useCartStore } from '@/stores/cart'
+
+const cart = useCartStore()
 let showSearchBox = ref(true)
 let search = ref('')
 </script>
@@ -36,7 +39,16 @@ let search = ref('')
       <v-btn v-if="showSearchBox" icon="mdi-magnify" @click="showSearchBox = !showSearchBox">
       </v-btn>
       <v-btn icon="mdi-heart"> </v-btn>
-      <v-btn icon="mdi-shopping"> </v-btn>
+      <v-badge
+        :model-value="!!cart.totalCount"
+        :content="cart.totalCount"
+        location="top right"
+        offset-x="10"
+        offset-y="12"
+      >
+        <!-- <v-icon icon="$vuetify" size="x-large"></v-icon> -->
+        <v-btn icon="mdi-shopping"></v-btn>
+      </v-badge>
       <v-btn icon="mdi-account-circle"> </v-btn>
     </template>
   </v-app-bar>
