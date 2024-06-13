@@ -11,6 +11,7 @@ let search = ref('')
   <v-app-bar fixed>
     <template v-slot:prepend>
       <v-app-bar-nav-icon
+        color="yellow-darken-3"
         icon="$vuetify"
         :to="{
           name: 'home'
@@ -41,9 +42,16 @@ let search = ref('')
     </v-row>
 
     <template v-slot:append>
-      <v-btn v-if="showSearchBox" icon="mdi-magnify" @click="showSearchBox = !showSearchBox">
+      <v-btn
+        class="bg-yellow-darken-3 text-white"
+        v-if="showSearchBox"
+        icon="mdi-magnify"
+        @click="showSearchBox = !showSearchBox"
+      >
       </v-btn>
-      <v-btn icon="mdi-heart"> </v-btn>
+      <v-btn icon="mdi-heart">
+        <v-icon color="yellow-darken-3" icon="mdi-heart"></v-icon>
+      </v-btn>
       <v-badge
         :model-value="!!cart.totalCount"
         :content="cart.totalCount"
@@ -51,10 +59,18 @@ let search = ref('')
         offset-x="10"
         offset-y="12"
       >
-        <!-- <v-icon icon="$vuetify" size="x-large"></v-icon> -->
-        <v-btn icon="mdi-shopping"></v-btn>
+        <v-btn
+          icon="mdi-shopping"
+          :to="{
+            name: 'cart'
+          }"
+        >
+          <v-icon color="yellow-darken-3" icon="mdi-shopping"></v-icon>
+        </v-btn>
       </v-badge>
-      <v-btn icon="mdi-account-circle"> </v-btn>
+      <v-btn icon="mdi-account-circle">
+        <v-icon color="yellow-darken-3" icon="mdi-shopping"></v-icon
+      ></v-btn>
     </template>
   </v-app-bar>
 </template>
