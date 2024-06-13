@@ -48,17 +48,20 @@ const props = defineProps(['product'])
     <v-card-actions>
       <v-container>
         <v-row justify="space-around">
-          <span class="bg-yellow rounded-pill px-2"> ${{ props.product.price }}</span>
-          <v-btn
+          <span class="bg-yellow-lighten-3 rounded-pill px-2"> ${{ props.product.price }}</span>
+          <!-- <v-btn
             icon="mdi-plus"
             class="bg-grey"
             density="compact"
-            @click="cart.addProduct(props.product)"
-          ></v-btn>
+            @click="cart.updateQuantity(props.product)"
+          ></v-btn> -->
         </v-row>
         <v-row class="mt-0">
           <v-btn icon="mdi-heart"></v-btn>
-          <v-btn icon="mdi-magnify"></v-btn>
+          <v-btn
+            icon="mdi-magnify"
+            :to="{ name: 'product', params: { productId: props.product.id } }"
+          ></v-btn>
         </v-row>
       </v-container>
     </v-card-actions>
