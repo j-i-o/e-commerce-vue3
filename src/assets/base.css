@@ -1,4 +1,6 @@
 /* color palette from <https://github.com/vuejs/theme> */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 :root {
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
@@ -67,6 +69,7 @@ body {
     background-color 0.5s;
   line-height: 1.6;
   font-family:
+    'Montserrat',
     Inter,
     -apple-system,
     BlinkMacSystemFont,
@@ -84,3 +87,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.text-h1,
+.text-h2,
+.text-h3,
+.text-h4,
+.text-h5,
+.text-h6 {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+/* .v-btn .v-btn__content .v-icon {
+  color: #f9a825;
+} */
