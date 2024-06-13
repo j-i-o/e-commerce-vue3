@@ -10,7 +10,12 @@ let search = ref('')
 <template>
   <v-app-bar fixed>
     <template v-slot:prepend>
-      <v-app-bar-nav-icon icon="$vuetify"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        icon="$vuetify"
+        :to="{
+          name: 'home'
+        }"
+      ></v-app-bar-nav-icon>
     </template>
 
     <v-app-bar-title
