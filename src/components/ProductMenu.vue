@@ -18,7 +18,7 @@ const categories = await fetch('https://fakestoreapi.com/products/categories').t
       :to="{ name: 'home' }"
       :key="cat"
       @click="catStore.changeCategory(cat)"
-      ><b :style="{ letterSpacing: '3px' }">{{ cat.toUpperCase() }}</b></v-list-item
+      ><b>{{ cat.toUpperCase() }}</b></v-list-item
     >
   </v-navigation-drawer>
 </template>

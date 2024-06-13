@@ -32,7 +32,7 @@ const props = defineProps(['product'])
       </v-row> -->
     </v-card-title>
     <v-card-subtitle>
-      {{ props.product.description }}
+      {{ props.product.title }}
     </v-card-subtitle>
     <v-card-text class="mt-4">
       <v-row justify="center">
@@ -40,7 +40,7 @@ const props = defineProps(['product'])
           :src="props.product.image"
           aspect-ratio="1/1"
           max-width="100px"
-          max-height="100px"
+          height="100px"
         ></v-img>
       </v-row>
     </v-card-text>
