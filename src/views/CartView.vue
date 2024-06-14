@@ -22,7 +22,7 @@ const { products } = useCartStore()
                 <v-col cols="6">
                   <v-row justify="center">
                     <v-col align-self="center">
-                      <span>{{ prod.cant }}x U$D {{ prod.cant * prod.price }}</span>
+                      <span>{{ prod.cant }}x U$D {{ (prod.cant * prod.price).toFixed(2) }}</span>
                     </v-col>
                   </v-row>
                 </v-col>

@@ -6,18 +6,6 @@ import { useCategoryStore } from '@/stores/category'
 const cart = useCartStore()
 const categories = useCategoryStore()
 const props = defineProps(['product'])
-// type Product = {
-//   id: int;
-//   title: string
-//   description: string;
-//   category: string;
-//   image: string;
-//   price: int;
-//   rating: {
-//     rate: double;
-//     count: int;
-//   }
-// }
 </script>
 <template>
   <v-card>
@@ -27,9 +15,6 @@ const props = defineProps(['product'])
           {{ props.product.category.toUpperCase() }}
         </v-chip>
       </v-row>
-      <!-- <v-row>
-        {{ props.product.title }}
-      </v-row> -->
     </v-card-title>
     <v-card-subtitle>
       {{ props.product.title }}
@@ -48,7 +33,9 @@ const props = defineProps(['product'])
     <v-card-actions>
       <v-container>
         <v-row justify="space-around">
-          <span class="bg-yellow-lighten-3 rounded-pill px-2"> ${{ props.product.price }}</span>
+          <span class="bg-yellow-lighten-3 rounded-pill px-2">
+            ${{ props.product.price.toFixed(2) }}</span
+          >
           <!-- <v-btn
             icon="mdi-plus"
             class="bg-grey"
