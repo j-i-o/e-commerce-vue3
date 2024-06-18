@@ -1,26 +1,18 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, computed } from 'vue'
+import { onMounted, computed } from 'vue'
 import { useCategoryStore } from '@/stores/category'
 import { useCartStore } from '@/stores/cart'
-import { VNumberInput } from 'vuetify/labs/VNumberInput'
+import QuantityInput from '@/components/QuantityInput.vue'
 
 const cartStore = useCartStore()
-const { getProduct, updateQuantity } = useCartStore()
+const { getProduct } = useCartStore()
 
 const product = computed(() => cartStore.product)
 const categoryStore = useCategoryStore()
 const props = defineProps({ productId: { type: String, required: true } })
-const quantity = ref(cartStore.getProductQuantity(Number.parseInt(props.productId)))
 
 onMounted(() => {
   getProduct(Number.parseInt(props.productId))
-  console.log(product.value)
-})
-
-watch(quantity, async (newCant) => {
-  if (product.value) {
-    updateQuantity(product.value, newCant)
-  }
 })
 </script>
 
@@ -46,18 +38,12 @@ watch(quantity, async (newCant) => {
             {{ product.description }}
           </v-col>
           <v-col class="border-thin">
-            <!-- QUANTITY -->
             <v-row justify="center">
               <v-col cols="12" md="6">
-                <VNumberInput
-                  label="Quantity"
-                  variant="outlined"
-                  density="compact"
-                  flat
-                  v-model="quantity"
-                  :min="0"
-                  control-variant="split"
-                ></VNumberInput>
+                <QuantityInput
+                  :product="product"
+                  :quantity="cartStore.getProductQuantity(Number.parseInt(props.productId))"
+                ></QuantityInput>
               </v-col>
             </v-row>
           </v-col>

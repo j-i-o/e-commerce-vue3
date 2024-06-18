@@ -2,24 +2,37 @@
 <script setup lang="ts">
 import { useCartStore } from '@/stores/cart'
 import { useCategoryStore } from '@/stores/category'
+import { useRouter } from 'vue-router'
+import QuantityInput from './QuantityInput.vue'
 
+const route = useRouter()
 const cart = useCartStore()
 const categories = useCategoryStore()
 const props = defineProps(['product'])
 </script>
 <template>
-  <v-card>
-    <v-card-title class="py-5 text-wrap">
-      <v-row>
-        <v-chip size="small" @click="categories.changeCategory(props.product.category)">
+  <v-card variant="outlined" hover rounded="xl">
+    <v-card-title class="py-5 text-wrap bg-grey-darken-2">
+      <v-row justify="space-between" class="px-3">
+        <v-chip
+          class="bg-grey-lighten-2 text-black"
+          size="small"
+          @click="categories.changeCategory(props.product.category)"
+        >
           {{ props.product.category.toUpperCase() }}
         </v-chip>
+        <v-icon color="yellow-darken-3" icon="mdi-heart"></v-icon>
       </v-row>
     </v-card-title>
-    <v-card-subtitle>
-      {{ props.product.title }}
-    </v-card-subtitle>
-    <v-card-text class="mt-4">
+    <v-card-text
+      class="mt-2 cursor-pointer"
+      @click.prevent="route.push({ name: 'product', params: { productId: props.product.id } })"
+    >
+      <v-row>
+        <v-col class="text-truncate">
+          {{ props.product.title }}
+        </v-col>
+      </v-row>
       <v-row justify="center">
         <v-img
           :src="props.product.image"
@@ -32,10 +45,18 @@ const props = defineProps(['product'])
 
     <v-card-actions>
       <v-container>
-        <v-row justify="space-around">
-          <span class="bg-yellow-lighten-3 rounded-pill px-2">
-            ${{ props.product.price.toFixed(2) }}</span
-          >
+        <v-row justify="space-around" align="center" no-gutters>
+          <v-col cols="12" md="4" class="text-center">
+            <span class="bg-yellow-darken-2 rounded-pill px-2 text-h6">
+              ${{ props.product.price.toFixed(2) }}</span
+            >
+          </v-col>
+          <v-col cols="6" md="5" class="text-center mt-2">
+            <QuantityInput
+              :product="props.product"
+              :quantity="cart.getProductQuantity(Number.parseInt(props.product.id))"
+            />
+          </v-col>
           <!-- <v-btn
             icon="mdi-plus"
             class="bg-grey"
@@ -43,13 +64,12 @@ const props = defineProps(['product'])
             @click="cart.updateQuantity(props.product)"
           ></v-btn> -->
         </v-row>
-        <v-row class="mt-0">
-          <v-btn icon="mdi-heart"></v-btn>
+        <!-- <v-row class="mt-0">
           <v-btn
             icon="mdi-magnify"
             :to="{ name: 'product', params: { productId: props.product.id } }"
           ></v-btn>
-        </v-row>
+        </v-row> -->
       </v-container>
     </v-card-actions>
   </v-card>
