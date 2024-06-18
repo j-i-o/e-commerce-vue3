@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useCartStore } from '@/stores/cart'
+import { useFavStore } from '@/stores/favs'
 
+const favs = useFavStore()
 const cart = useCartStore()
 let showSearchBox = ref(true)
 let search = ref('')
@@ -53,9 +55,18 @@ let search = ref('')
         @click="showSearchBox = !showSearchBox"
       >
       </v-btn>
-      <v-btn icon="mdi-heart">
-        <v-icon color="yellow-darken-3" icon="mdi-heart"></v-icon>
-      </v-btn>
+      <v-badge
+        :model-value="!!favs.totalItems"
+        dot
+        location="top right"
+        offset-x="11"
+        offset-y="13"
+        color="red"
+      >
+        <v-btn icon="mdi-heart">
+          <v-icon color="yellow-darken-3" icon="mdi-heart"></v-icon>
+        </v-btn>
+      </v-badge>
       <v-badge
         :model-value="!!cart.totalCount"
         :content="cart.totalCount"

@@ -2,11 +2,13 @@
 <script setup lang="ts">
 import { useCartStore } from '@/stores/cart'
 import { useCategoryStore } from '@/stores/category'
+import { useFavStore } from '@/stores/favs'
 import { useRouter } from 'vue-router'
 import QuantityInput from './QuantityInput.vue'
 
 const route = useRouter()
 const cart = useCartStore()
+const favs = useFavStore()
 const categories = useCategoryStore()
 const props = defineProps(['product'])
 </script>
@@ -21,7 +23,11 @@ const props = defineProps(['product'])
         >
           {{ props.product.category.toUpperCase() }}
         </v-chip>
-        <v-icon color="yellow-darken-3" icon="mdi-heart"></v-icon>
+        <v-icon
+          :color="favs.includes(props.product.id) ? 'red' : 'yellow-darken-3'"
+          icon="mdi-heart"
+          @click.prevent="favs.addRemoveProduct(props.product)"
+        ></v-icon>
       </v-row>
     </v-card-title>
     <v-card-text
