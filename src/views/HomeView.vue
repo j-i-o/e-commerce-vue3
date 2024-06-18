@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import Product from '../components/Product.vue'
-import ProductMenu from '../components/ProductMenu.vue'
+import Product from '@/components/Product.vue'
+import ProductMenu from '@/components/ProductMenu.vue'
 import { useCategoryStore } from '@/stores/category'
 
 const catStore = useCategoryStore()

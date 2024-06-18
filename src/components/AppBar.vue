@@ -20,8 +20,8 @@ let search = ref('')
     </template>
 
     <v-app-bar-title><b class="text-uppercase">E-commerce</b></v-app-bar-title>
-    <v-row justify="end" class="mt-2">
-      <v-col cols="12" md="4">
+    <v-row justify="end">
+      <v-col cols="10" md="4">
         <v-text-field
           v-if="!showSearchBox"
           v-model="search"
@@ -31,6 +31,7 @@ let search = ref('')
           single-line
           variant="outlined"
           placeholder="Search"
+          hide-details
         >
           <template v-slot:append-inner>
             <v-btn
@@ -77,10 +78,8 @@ let search = ref('')
     </template>
   </v-app-bar>
 </template>
-<style scoped>
-.v-input--density-compact .v-field--variant-outlined,
-.v-input--density-compact .v-field--single-line,
-.v-input--density-compact .v-field--no-label {
-  padding-bottom: 0px !important;
+<style>
+.v-field__field {
+  align-self: center !important;
 }
 </style>

@@ -4,7 +4,7 @@ const links = ['More information', 'About us', 'Legal', 'Partners']
 </script>
 
 <template>
-  <v-footer app class="bg-grey-lighten-1">
+  <v-footer app class="bg-grey-darken-1">
     <v-row justify="center" no-gutters>
       <v-btn
         v-for="link in links"
@@ -17,7 +17,7 @@ const links = ['More information', 'About us', 'Legal', 'Partners']
         {{ link }}
       </v-btn>
       <v-col class="text-center mt-4" cols="12">
-        {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+        {{ new Date().getFullYear() }} — <strong>JIO</strong>
       </v-col>
     </v-row>
   </v-footer>
