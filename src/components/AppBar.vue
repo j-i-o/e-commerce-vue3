@@ -19,11 +19,9 @@ let search = ref('')
       ></v-app-bar-nav-icon>
     </template>
 
-    <v-app-bar-title
-      ><b class="text-uppercase" :style="{ letterSpacing: '3px' }">E-commerce</b></v-app-bar-title
-    >
+    <v-app-bar-title><b class="text-uppercase">E-commerce</b></v-app-bar-title>
     <v-row justify="end" class="mt-2">
-      <v-col cols="6">
+      <v-col cols="12" md="4">
         <v-text-field
           v-if="!showSearchBox"
           v-model="search"
@@ -32,10 +30,15 @@ let search = ref('')
           rounded
           single-line
           variant="outlined"
-          placeholder="Find what you look for"
+          placeholder="Search"
         >
           <template v-slot:append-inner>
-            <v-btn icon="mdi-magnify" @click="showSearchBox = !showSearchBox"> </v-btn>
+            <v-btn
+              icon="mdi-magnify"
+              color="yellow-darken-3"
+              @click="showSearchBox = !showSearchBox"
+            >
+            </v-btn>
           </template>
         </v-text-field>
       </v-col>
@@ -69,7 +72,7 @@ let search = ref('')
         </v-btn>
       </v-badge>
       <v-btn icon="mdi-account-circle">
-        <v-icon color="yellow-darken-3" icon="mdi-shopping"></v-icon
+        <v-icon color="yellow-darken-3" icon="mdi-account-circle"></v-icon
       ></v-btn>
     </template>
   </v-app-bar>
