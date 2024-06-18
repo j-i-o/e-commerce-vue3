@@ -14,7 +14,7 @@ onMounted(async () => {
   <v-container>
     <ProductMenu />
     <v-row>
-      <v-col cols="3" v-for="prod in catStore.products" :key="prod.id">
+      <v-col cols="6" md="4" lg="3" v-for="prod in catStore.products" :key="prod.id">
         <Product :product="prod" />
       </v-col>
     </v-row>
