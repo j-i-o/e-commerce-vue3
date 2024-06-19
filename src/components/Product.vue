@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { useCartStore } from '@/stores/cart'
-import { useCategoryStore } from '@/stores/category'
+import { useHomeStore } from '@/stores/home'
 import { useFavStore } from '@/stores/favs'
 import { useRouter } from 'vue-router'
 import QuantityInput from './QuantityInput.vue'
@@ -9,7 +9,7 @@ import QuantityInput from './QuantityInput.vue'
 const route = useRouter()
 const cart = useCartStore()
 const favs = useFavStore()
-const categories = useCategoryStore()
+const categories = useHomeStore()
 const props = defineProps(['product'])
 </script>
 <template>
@@ -19,7 +19,7 @@ const props = defineProps(['product'])
         <v-chip
           class="bg-grey-lighten-2 text-black"
           size="small"
-          @click="categories.changeCategory(props.product.category)"
+          @click="categories.getProducts(props.product.category)"
         >
           {{ props.product.category.toUpperCase() }}
         </v-chip>

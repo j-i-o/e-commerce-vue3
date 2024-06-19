@@ -1,6 +1,6 @@
 <script setup>
-import { useCategoryStore } from '@/stores/category'
-const catStore = useCategoryStore()
+import { useHomeStore } from '@/stores/home'
+const homeStore = useHomeStore()
 
 const categories = await fetch('https://fakestoreapi.com/products/categories').then((res) =>
   res.json()
@@ -8,16 +8,16 @@ const categories = await fetch('https://fakestoreapi.com/products/categories').t
 </script>
 <template>
   <v-navigation-drawer>
-    <v-list-item class="text-overline bg-grey" @click="catStore.changeCategory()"
+    <v-list-item class="text-overline bg-grey" @click="homeStore.getProducts()"
       ><b>Home</b></v-list-item
     >
     <v-divider></v-divider>
     <v-list-item
       v-for="cat in categories"
-      :class="catStore.currentCategory === cat ? 'selected' : ''"
+      :class="homeStore.currentCategory === cat ? 'selected' : ''"
       :to="{ name: 'home' }"
       :key="cat"
-      @click="catStore.changeCategory(cat)"
+      @click="homeStore.getProducts(cat)"
       ><b>{{ cat.toUpperCase() }}</b></v-list-item
     >
   </v-navigation-drawer>

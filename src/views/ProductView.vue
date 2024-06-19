@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, computed } from 'vue'
-import { useCategoryStore } from '@/stores/category'
+import { useHomeStore } from '@/stores/home'
 import { useCartStore } from '@/stores/cart'
 import QuantityInput from '@/components/QuantityInput.vue'
 
@@ -8,7 +8,7 @@ const cartStore = useCartStore()
 const { getProduct } = useCartStore()
 
 const product = computed(() => cartStore.product)
-const categoryStore = useCategoryStore()
+const homeStore = useHomeStore()
 const props = defineProps({ productId: { type: String, required: true } })
 
 onMounted(() => {
@@ -19,7 +19,7 @@ onMounted(() => {
 <template>
   <v-container v-if="product">
     <v-row class="mt-2 mb-5">
-      <v-chip @click="categoryStore.changeCategory(product.category)">
+      <v-chip @click="homeStore.getProducts(product.category)">
         {{ product.category.toUpperCase() }}
       </v-chip>
     </v-row>
