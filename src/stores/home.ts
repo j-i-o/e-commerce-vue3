@@ -5,7 +5,8 @@ import type { Product } from '@/types/Product'
 
 export const useHomeStore = defineStore('home', () => {
   const api = useApiStore()
-  // const currentCategory = ref('')
+  const drawer = ref(false)
+  const currentCategory = ref('')
   const products = ref<Product[]>([])
 
   async function getProducts(category: string = '') {
@@ -15,18 +16,20 @@ export const useHomeStore = defineStore('home', () => {
     }
   }
 
-  // async function changeCategory(category: string) {
-  //   currentCategory.value = category
-  //   const data = await api.fetchProducts(currentCategory.value)
+  async function changeCategory(category: string) {
+    currentCategory.value = category
+    const data = await api.fetchProducts(currentCategory.value)
 
-  //   if (data) {
-  //     products.value = data
-  //   }
-  // }
+    if (data) {
+      products.value = data
+    }
+  }
 
   return {
+    drawer,
+    currentCategory,
     products,
-    getProducts
-    // changeCategory
+    getProducts,
+    changeCategory
   }
 })
