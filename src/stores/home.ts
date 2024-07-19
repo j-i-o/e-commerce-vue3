@@ -8,11 +8,19 @@ export const useHomeStore = defineStore('home', () => {
   const drawer = ref(false)
   const currentCategory = ref('')
   const products = ref<Product[]>([])
+  const popup = ref(true)
 
   async function getProducts(category: string = '') {
+    console.log('Category', category)
+
     const data = await api.fetchProducts(category)
     if (data) {
       products.value = data
+      if (category) {
+        currentCategory.value = category
+      } else {
+        currentCategory.value = ''
+      }
     }
   }
 
@@ -26,6 +34,7 @@ export const useHomeStore = defineStore('home', () => {
   }
 
   return {
+    popup,
     drawer,
     currentCategory,
     products,
