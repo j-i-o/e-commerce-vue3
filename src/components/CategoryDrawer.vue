@@ -1,8 +1,6 @@
 <template>
   <v-navigation-drawer v-model="homeStore.drawer" temporary>
-    <v-list-item @click="homeStore.getProducts()" class="bg-grey" appendIcon="mdi-home"
-      >HOME</v-list-item
-    >
+    <v-list-item @click="goHome" class="bg-grey" appendIcon="mdi-home">HOME</v-list-item>
     <v-list-item
       v-for="cat in categories"
       :class="homeStore.currentCategory === cat ? 'bg-grey-lighten-2' : ''"
@@ -16,8 +14,10 @@
 
 <script setup lang="ts">
 import { useHomeStore } from '@/stores/home'
+import { useRouter } from 'vue-router'
 
 const homeStore = useHomeStore()
+const router = useRouter()
 
 console.log(homeStore.currentCategory)
 
@@ -29,5 +29,12 @@ console.log(categories)
 const changeCategory = async (cat: string) => {
   homeStore.drawer = false
   await homeStore.changeCategory(cat)
+  router.push({ name: 'home' })
+}
+
+const goHome = async () => {
+  homeStore.drawer = false
+  await homeStore.getProducts()
+  router.push({ name: 'home' })
 }
 </script>

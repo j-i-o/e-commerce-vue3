@@ -16,12 +16,12 @@ let search = ref('')
     <template v-slot:prepend>
       <v-app-bar-nav-icon
         color="yellow-darken-3"
-        icon="$vuetify"
+        icon="mdi-menu"
         @click.prevent="home.drawer = !home.drawer"
       ></v-app-bar-nav-icon>
     </template>
 
-    <v-app-bar-title><b class="text-uppercase">E-commerce</b></v-app-bar-title>
+    <v-app-bar-title><span class="text-uppercase">E-commerce</span></v-app-bar-title>
     <v-row justify="end">
       <v-col cols="10" md="4">
         <v-text-field
