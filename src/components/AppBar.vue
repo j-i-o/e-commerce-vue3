@@ -63,7 +63,7 @@ let search = ref('')
         offset-y="13"
         color="red"
       >
-        <v-btn icon="mdi-heart" @click.prevent="favs.drawer = true">
+        <v-btn :disabled="!favs.totalItems" icon="mdi-heart" @click.prevent="favs.drawer = true">
           <v-icon color="yellow-darken-3" icon="mdi-heart"></v-icon>
         </v-btn>
       </v-badge>
@@ -75,6 +75,7 @@ let search = ref('')
         offset-y="12"
       >
         <v-btn
+          :disabled="!cart.totalCount"
           icon="mdi-shopping"
           :to="{
             name: 'cart'
