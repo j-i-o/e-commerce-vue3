@@ -12,17 +12,16 @@ const { products } = useCartStore()
       <v-col cols="8">
         <div v-if="products.length">
           <v-card v-for="prod in products" :key="prod.id" class="mb-2" max-height="20vh">
-            <v-card-text>
+            <v-card-text class="mx-2">
               <v-row class="text-h6 d-inline-block text-truncate">{{ prod.title }}</v-row>
-              <v-row>
-                <v-col cols="2"
+              <v-row align="center" justify="space-between">
+                <v-col cols="4"
                   ><v-img :src="prod.image" aspect-ratio="1/1" height="10vh"></v-img
                 ></v-col>
-                <v-col></v-col>
                 <v-col cols="6">
                   <v-row justify="center">
                     <v-col align-self="center">
-                      <span>{{ prod.cant }}x U$D {{ (prod.cant * prod.price).toFixed(2) }}</span>
+                      <span>{{ prod.cant }} x U$D {{ (prod.cant * prod.price).toFixed(2) }}</span>
                     </v-col>
                   </v-row>
                 </v-col>
@@ -33,7 +32,7 @@ const { products } = useCartStore()
             <v-col cols="9" md="auto">
               <v-card rounded="xl" class="bg-grey-lighten-2">
                 <v-card-text>
-                  <v-row class="px-2" justify="space-between">
+                  <v-row class="px-5" justify="space-around">
                     <v-col cols="auto">
                       <v-row> TOTAL </v-row>
                       <v-row>
