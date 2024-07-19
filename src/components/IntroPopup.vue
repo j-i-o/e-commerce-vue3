@@ -26,10 +26,12 @@ const techs = [
 ]
 const links = [
   {
+    text: 'LinkedIn',
     icon: 'mdi-linkedin',
     url: 'https://www.linkedin.com/in/juan-ignacio-ordoqui-9a36a619a'
   },
   {
+    text: 'GitHub',
     icon: 'mdi-github',
     url: 'https://github.com/j-i-o'
   }
@@ -55,6 +57,7 @@ const links = [
                   <v-list-item v-for="(item, index) in links" :key="index">
                     <v-list-item-title>
                       <a :href="item.url" target="_blank">
+                        {{ item.text }}
                         <v-icon color="yellow-darken-3" :icon="item.icon"
                       /></a>
                     </v-list-item-title>
