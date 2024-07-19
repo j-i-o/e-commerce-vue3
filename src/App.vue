@@ -2,10 +2,12 @@
 import { RouterView } from 'vue-router'
 import AppBar from './components/AppBar.vue'
 import Footer from './components/Footer.vue'
+import CategoryDrawer from './components/CategoryDrawer.vue'
 </script>
 
 <template>
   <v-app>
+    <CategoryDrawer />
     <AppBar />
     <Footer />
     <v-main>

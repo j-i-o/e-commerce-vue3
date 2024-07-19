@@ -2,7 +2,9 @@
 import { ref } from 'vue'
 import { useCartStore } from '@/stores/cart'
 import { useFavStore } from '@/stores/favs'
+import { useHomeStore } from '@/stores/home'
 
+const home = useHomeStore()
 const favs = useFavStore()
 const cart = useCartStore()
 let showSearchBox = ref(true)
@@ -15,9 +17,7 @@ let search = ref('')
       <v-app-bar-nav-icon
         color="yellow-darken-3"
         icon="$vuetify"
-        :to="{
-          name: 'home'
-        }"
+        @click.prevent="home.drawer = !home.drawer"
       ></v-app-bar-nav-icon>
     </template>
 
