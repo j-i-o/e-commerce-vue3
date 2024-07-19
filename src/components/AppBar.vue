@@ -63,7 +63,7 @@ let search = ref('')
         offset-y="13"
         color="red"
       >
-        <v-btn icon="mdi-heart">
+        <v-btn icon="mdi-heart" @click.prevent="favs.drawer = true">
           <v-icon color="yellow-darken-3" icon="mdi-heart"></v-icon>
         </v-btn>
       </v-badge>
