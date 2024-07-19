@@ -4,6 +4,7 @@ import type { Product } from '@/types/Product'
 
 export const useFavStore = defineStore('favs', () => {
   const products = ref<Product[]>([])
+  const drawer = ref(true)
   const totalItems = computed(() => products.value.length)
 
   function includes(productId: number) {
@@ -19,6 +20,7 @@ export const useFavStore = defineStore('favs', () => {
     }
   }
   return {
+    drawer,
     products,
     totalItems,
     includes,
