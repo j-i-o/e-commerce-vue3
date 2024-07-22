@@ -41,7 +41,7 @@ const links = [
 <template>
   <v-overlay v-model="homeStore.popup" class="align-center justify-center">
     <v-row justify="center">
-      <v-col cols="6">
+      <v-col cols="10" md="6" lg="4">
         <v-card>
           <v-card-title class="bg-grey-darken-1 text-white">
             <h1>Welcome!</h1>
