@@ -34,7 +34,7 @@ watch(newCant, async (newCant) => {
   <v-btn
     v-else
     icon="mdi-plus"
-    class="bg-grey text-left"
+    class="bg-yellow-darken-3 text-left text-white"
     density="comfortable"
     @click="newCant++"
   ></v-btn>

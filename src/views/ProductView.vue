@@ -42,7 +42,7 @@ onMounted(async () => {
           <v-col cols="12" md="8">
             {{ product.description }}
           </v-col>
-          <v-col cols="10" md="4">
+          <v-col cols="10" md="4" class="text-center">
             <QuantityInput
               :product="product"
               :quantity="cartStore.getProductQuantity(Number.parseInt(props.productId))"
