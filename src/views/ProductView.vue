@@ -39,18 +39,14 @@ onMounted(async () => {
           </v-col>
         </v-row>
         <v-row justify="center" class="text-subtitle-2">
-          <v-col cols="8">
+          <v-col cols="12" md="8">
             {{ product.description }}
           </v-col>
-          <v-col class="border-thin">
-            <v-row justify="center">
-              <v-col cols="12" md="6">
-                <QuantityInput
-                  :product="product"
-                  :quantity="cartStore.getProductQuantity(Number.parseInt(props.productId))"
-                ></QuantityInput>
-              </v-col>
-            </v-row>
+          <v-col cols="10" md="4">
+            <QuantityInput
+              :product="product"
+              :quantity="cartStore.getProductQuantity(Number.parseInt(props.productId))"
+            ></QuantityInput>
           </v-col>
         </v-row>
         <div class="mt-5" v-if="homeStore.products">

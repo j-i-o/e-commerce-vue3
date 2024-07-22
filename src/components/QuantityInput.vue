@@ -4,7 +4,9 @@ import { watch, ref } from 'vue'
 import { useCartStore } from '@/stores/cart'
 import type { Product } from '@/types/Product'
 import { VNumberInput } from 'vuetify/labs/VNumberInput'
+import { useDisplay } from 'vuetify'
 
+const { mobile } = useDisplay()
 const { updateQuantity } = useCartStore()
 const props = defineProps<{
   quantity: number
@@ -27,6 +29,7 @@ watch(newCant, async (newCant) => {
     v-model="newCant"
     :min="0"
     control-variant="split"
+    vert
   ></VNumberInput>
   <v-btn
     v-else
