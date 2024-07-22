@@ -11,13 +11,23 @@ const { products } = useCartStore()
     <v-row justify="center">
       <v-col cols="12" md="8">
         <div v-if="products.length">
-          <v-card v-for="prod in products" :key="prod.id" class="mb-2" max-height="20vh">
-            <v-card-text class="mx-2">
-              <v-row class="text-h6 d-inline-block text-truncate pl-0">
-                <v-col cols="12" class="pl-0">
-                  {{ prod.title }}
+          <v-card
+            v-for="prod in products"
+            :key="prod.id"
+            class="mb-2"
+            max-height="20vh"
+            max-width="100vw"
+          >
+            <v-card-title>
+              <v-row class="pl-0 truncate">
+                <v-col cols="12" class="pl-0" :title="prod.title">
+                  <span class="text-h6">
+                    {{ prod.title }}
+                  </span>
                 </v-col>
               </v-row>
+            </v-card-title>
+            <v-card-text class="mx-2">
               <v-row align="center" justify="space-between">
                 <v-col cols="4"
                   ><v-img :src="prod.image" aspect-ratio="1/1" height="10vh"></v-img
@@ -63,3 +73,10 @@ const { products } = useCartStore()
     </v-row>
   </v-container>
 </template>
+<style scoped>
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>

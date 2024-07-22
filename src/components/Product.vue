@@ -18,13 +18,13 @@ const { mobile } = useDisplay()
   <v-card variant="outlined" hover rounded="xl">
     <v-card-title class="py-5 text-wrap bg-grey-darken-2">
       <v-row justify="space-between" class="ml-1">
-        <v-col cols="auto" class="pa-0">
+        <v-col cols="8" class="pa-0">
           <v-chip
             color="grey-lighten-5"
             :size="mobile ? 'x-small' : 'small'"
             @click="categories.getProducts(props.product.category)"
           >
-            <span class="display-4">
+            <span class="text-truncate d-inline-block">
               {{ props.product.category.toUpperCase() }}
             </span>
           </v-chip>
