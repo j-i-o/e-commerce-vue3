@@ -6,26 +6,25 @@ import { useHomeStore } from '@/stores/home'
 import { useLoaderStore } from '@/stores/loader'
 
 const homeStore = useHomeStore()
-const { loading } = useLoaderStore()
+const loader = useLoaderStore()
 
 const products = computed(() => homeStore.products)
 
 onMounted(async () => {
-  await homeStore.getProducts()
+  if (!products.value.length) {
+    await homeStore.getProducts()
+  }
 })
 </script>
 
 <template>
   <v-container>
-    <v-row v-if="!loading && products.length" justify="center">
+    <v-row v-if="!loader.loading && products.length" justify="center">
       <v-col cols="12" md="6">
         <Carousel :products="products" />
       </v-col>
     </v-row>
-    <v-row v-if="loading">
-      {{ loading }}
-    </v-row>
-    <v-row v-else>
+    <v-row>
       <v-col v-if="!!homeStore.currentCategory" cols="12">
         <v-chip class="bg-grey-lighten-2 text-black px-2" size="lg">
           {{ homeStore.currentCategory.toUpperCase() }}
