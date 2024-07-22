@@ -13,9 +13,14 @@
         </v-card-text>
         <v-card-actions class="py-0 my-0 bg-grey-lighten-2">
           <v-row justify="end" class="py-0 my-0" align="center">
-            <v-col> ${{ item.price }} </v-col>
+            <v-col> ${{ item.price.toFixed(2) }} </v-col>
             <v-col cols="auto" class="py-0 my-0">
-              <v-btn density="compact" class="text-white bg-red-lighten-2">Remove</v-btn>
+              <v-btn
+                density="compact"
+                class="text-white bg-red-lighten-2"
+                @click.prevent="removeFav(item)"
+                >Remove</v-btn
+              >
             </v-col>
           </v-row>
         </v-card-actions>
@@ -26,6 +31,11 @@
 
 <script setup lang="ts">
 import { useFavStore } from '@/stores/favs'
+
+const removeFav = (item) => {
+  favStore.addRemoveProduct(item)
+  favStore.drawer = false
+}
 
 const favStore = useFavStore()
 </script>
