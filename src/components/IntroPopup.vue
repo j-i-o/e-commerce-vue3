@@ -49,7 +49,7 @@ const links = [
           <v-card-text class="mt-3">
             <p>
               This app was made by
-              <v-menu open-on-hover>
+              <v-menu open-on-hover open-on-click>
                 <template v-slot:activator="{ props }">
                   <span class="rounded-lg bg-grey px-2" v-bind="props">Juan I. Ordoqui</span>
                 </template>
