@@ -2,6 +2,7 @@
 import { onMounted, computed } from 'vue'
 import { useHomeStore } from '@/stores/home'
 import { useCartStore } from '@/stores/cart'
+import { useRouter } from 'vue-router'
 import QuantityInput from '@/components/QuantityInput.vue'
 
 const cartStore = useCartStore()
@@ -9,10 +10,14 @@ const { getProduct } = useCartStore()
 
 const product = computed(() => cartStore.product)
 const homeStore = useHomeStore()
+const router = useRouter()
 const props = defineProps({ productId: { type: String, required: true } })
 
-onMounted(() => {
-  getProduct(Number.parseInt(props.productId))
+onMounted(async () => {
+  await getProduct(Number.parseInt(props.productId))
+  if (product.value) {
+    await homeStore.getProducts(product.value.category)
+  }
 })
 </script>
 
@@ -48,7 +53,23 @@ onMounted(() => {
             </v-row>
           </v-col>
         </v-row>
-        <v-row> OTRAS OFERTAS </v-row>
+        <div class="mt-5" v-if="homeStore.products">
+          <v-row>Related products:</v-row>
+          <v-row>
+            <v-col
+              align-self="center"
+              :cols="homeStore.products.length / 12"
+              v-for="(product, index) in homeStore.products"
+              :key="index"
+              class="cursor-pointer"
+              @click.prevent="
+                router.replace({ name: 'product', params: { productId: product.id } })
+              "
+            >
+              <v-img :src="product.image"></v-img>
+            </v-col>
+          </v-row>
+        </div>
       </v-col>
     </v-row>
     <v-row></v-row>
