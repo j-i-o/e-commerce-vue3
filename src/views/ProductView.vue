@@ -62,7 +62,7 @@ onMounted(async () => {
                 router.replace({ name: 'product', params: { productId: product.id } })
               "
             >
-              <v-img :src="product.image"></v-img>
+              <v-img :src="product.image" max-height="10vh"></v-img>
             </v-col>
           </v-row>
         </div>

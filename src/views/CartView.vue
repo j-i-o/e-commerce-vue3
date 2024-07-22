@@ -9,11 +9,15 @@ const { products } = useCartStore()
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col cols="8">
+      <v-col cols="12" md="8">
         <div v-if="products.length">
           <v-card v-for="prod in products" :key="prod.id" class="mb-2" max-height="20vh">
             <v-card-text class="mx-2">
-              <v-row class="text-h6 d-inline-block text-truncate">{{ prod.title }}</v-row>
+              <v-row class="text-h6 d-inline-block text-truncate pl-0">
+                <v-col cols="12" class="pl-0">
+                  {{ prod.title }}
+                </v-col>
+              </v-row>
               <v-row align="center" justify="space-between">
                 <v-col cols="4"
                   ><v-img :src="prod.image" aspect-ratio="1/1" height="10vh"></v-img
@@ -28,8 +32,8 @@ const { products } = useCartStore()
               </v-row>
             </v-card-text>
           </v-card>
-          <v-row justify="end">
-            <v-col cols="9" md="auto">
+          <v-row justify="end" class="pa-0">
+            <v-col cols="auto" md="auto">
               <v-card rounded="xl" class="bg-grey-lighten-2">
                 <v-card-text>
                   <v-row class="px-5" justify="space-around">
