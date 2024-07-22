@@ -30,8 +30,20 @@ export const useApiStore = defineStore('api', () => {
     }
   }
 
+  async function fetchCategories() {
+    setLoader()
+    try {
+      const response = await axios.get(`https://fakestoreapi.com/products/categories`)
+      return response.data as string[]
+    } catch (error) {
+      console.error('Error fetching categories', error)
+    } finally {
+      removeLoader()
+    }
+  }
   return {
     fetchProduct,
-    fetchProducts
+    fetchProducts,
+    fetchCategories
   }
 })
