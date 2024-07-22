@@ -75,7 +75,7 @@ const links = [
               It feeds on data provided by
               <a href="https://fakestoreapi.com/" target="_blank">"Fake Store API"</a>.
             </p>
-            <p>Thanks for the visit!</p>
+            <p>Thanks for visiting!</p>
           </v-card-text>
           <v-card-actions>
             <v-row justify="end">

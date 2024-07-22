@@ -1,12 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import { onMounted } from 'vue'
-
 const props = defineProps(['products'])
-
-onMounted(() => {
-  console.log(props.products)
-})
 </script>
 <template>
   <v-carousel

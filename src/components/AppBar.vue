@@ -12,17 +12,17 @@ let search = ref('')
 </script>
 
 <template>
-  <v-app-bar fixed>
+  <v-app-bar fixed color="yellow-darken-3">
     <template v-slot:prepend>
       <v-app-bar-nav-icon
-        color="yellow-darken-3"
+        color="white"
         icon="mdi-menu"
         @click.prevent="home.drawer = !home.drawer"
       ></v-app-bar-nav-icon>
     </template>
 
     <v-app-bar-title><span class="text-uppercase">E-commerce</span></v-app-bar-title>
-    <v-row justify="end">
+    <!-- <v-row justify="end">
       <v-col cols="10" md="4">
         <v-text-field
           v-if="!showSearchBox"
@@ -38,23 +38,23 @@ let search = ref('')
           <template v-slot:append-inner>
             <v-btn
               icon="mdi-magnify"
-              color="yellow-darken-3"
+              color="grey-lighten-1"
               @click="showSearchBox = !showSearchBox"
             >
             </v-btn>
           </template>
         </v-text-field>
       </v-col>
-    </v-row>
+    </v-row> -->
 
     <template v-slot:append>
-      <v-btn
-        class="bg-yellow-darken-3 text-white"
+      <!-- <v-btn
+        class="bg-grey-lighten-1 text-white"
         v-if="showSearchBox"
         icon="mdi-magnify"
         @click="showSearchBox = !showSearchBox"
       >
-      </v-btn>
+      </v-btn> -->
       <v-badge
         :model-value="!!favs.totalItems"
         dot
@@ -64,7 +64,7 @@ let search = ref('')
         color="red"
       >
         <v-btn :disabled="!favs.totalItems" icon="mdi-heart" @click.prevent="favs.drawer = true">
-          <v-icon color="yellow-darken-3" icon="mdi-heart"></v-icon>
+          <v-icon color="white" icon="mdi-heart"></v-icon>
         </v-btn>
       </v-badge>
       <v-badge
@@ -81,11 +81,11 @@ let search = ref('')
             name: 'cart'
           }"
         >
-          <v-icon color="yellow-darken-3" icon="mdi-shopping"></v-icon>
+          <v-icon color="white" icon="mdi-shopping"></v-icon>
         </v-btn>
       </v-badge>
       <v-btn icon="mdi-account-circle">
-        <v-icon color="yellow-darken-3" icon="mdi-account-circle"></v-icon
+        <v-icon color="white" icon="mdi-account-circle"></v-icon
       ></v-btn>
     </template>
   </v-app-bar>
