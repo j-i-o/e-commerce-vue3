@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useCartStore } from '@/stores/cart'
 import { useFavStore } from '@/stores/favs'
 import { useHomeStore } from '@/stores/home'
@@ -7,8 +6,6 @@ import { useHomeStore } from '@/stores/home'
 const home = useHomeStore()
 const favs = useFavStore()
 const cart = useCartStore()
-let showSearchBox = ref(true)
-let search = ref('')
 </script>
 
 <template>
@@ -21,40 +18,15 @@ let search = ref('')
       ></v-app-bar-nav-icon>
     </template>
 
-    <v-app-bar-title><span class="text-uppercase">E-commerce</span></v-app-bar-title>
-    <!-- <v-row justify="end">
-      <v-col cols="10" md="4">
-        <v-text-field
-          v-if="!showSearchBox"
-          v-model="search"
-          center-affix
-          density="compact"
-          rounded
-          single-line
-          variant="outlined"
-          placeholder="Search"
-          hide-details
-        >
-          <template v-slot:append-inner>
-            <v-btn
-              icon="mdi-magnify"
-              color="grey-lighten-1"
-              @click="showSearchBox = !showSearchBox"
-            >
-            </v-btn>
-          </template>
-        </v-text-field>
-      </v-col>
-    </v-row> -->
+    <v-app-bar-title class="ml-0">
+      <v-row>
+        <v-col cols="auto">
+          <span class="display-4">E-COMMERCE</span>
+        </v-col>
+      </v-row>
+    </v-app-bar-title>
 
     <template v-slot:append>
-      <!-- <v-btn
-        class="bg-grey-lighten-1 text-white"
-        v-if="showSearchBox"
-        icon="mdi-magnify"
-        @click="showSearchBox = !showSearchBox"
-      >
-      </v-btn> -->
       <v-badge
         :model-value="!!favs.totalItems"
         dot

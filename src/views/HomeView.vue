@@ -35,7 +35,7 @@ onMounted(async () => {
           ></v-icon>
         </v-chip>
       </v-col>
-      <v-col cols="6" md="4" lg="3" v-for="prod in products" :key="prod.id">
+      <v-col cols="6" lg="3" v-for="prod in products" :key="prod.id">
         <Product :product="prod" />
       </v-col>
     </v-row>
