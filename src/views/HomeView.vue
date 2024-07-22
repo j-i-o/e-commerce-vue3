@@ -18,7 +18,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <v-container>
+  <v-container class="px-0">
     <v-row v-if="!loader.loading && products.length" justify="center">
       <v-col cols="12" md="6">
         <Carousel :products="products" />
