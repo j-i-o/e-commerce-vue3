@@ -18,7 +18,7 @@ import FavDrawer from './components/FavDrawer.vue'
     <Footer />
     <v-main>
       <v-container fluid>
-        <RouterView />
+        <RouterView :key="$route.fullPath" />
       </v-container>
     </v-main>
   </v-app>
