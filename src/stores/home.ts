@@ -32,7 +32,7 @@ export const useHomeStore = defineStore('home', () => {
   }
 
   async function getCategories() {
-    if (!categories.value) {
+    if (!categories.value.length) {
       const data = await api.fetchCategories()
       if (data) {
         categories.value = data
