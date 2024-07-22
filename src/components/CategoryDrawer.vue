@@ -1,8 +1,8 @@
 <template>
   <v-navigation-drawer v-model="homeStore.drawer" temporary>
-    <v-list-item @click="goHome" class="bg-grey" appendIcon="mdi-home">HOME</v-list-item>
+    <v-list-item @click="changeCategory()" class="bg-grey" appendIcon="mdi-home">HOME</v-list-item>
     <v-list-item
-      v-for="cat in categories"
+      v-for="cat in homeStore.categories"
       :class="homeStore.currentCategory === cat ? 'bg-grey-lighten-2' : ''"
       :key="cat"
       @click.prevent="changeCategory(cat)"
@@ -14,27 +14,28 @@
 
 <script setup lang="ts">
 import { useHomeStore } from '@/stores/home'
+import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const homeStore = useHomeStore()
 const router = useRouter()
 
-console.log(homeStore.currentCategory)
+onMounted(async () => {
+  await homeStore.getCategories()
+})
 
-const categories = await fetch('https://fakestoreapi.com/products/categories').then((res) =>
-  res.json()
-)
-console.log(categories)
-
-const changeCategory = async (cat: string) => {
+const changeCategory = async (cat: string | null = null) => {
   homeStore.drawer = false
-  await homeStore.changeCategory(cat)
-  router.push({ name: 'home' })
-}
-
-const goHome = async () => {
-  homeStore.drawer = false
-  await homeStore.getProducts()
+  if (cat) {
+    await homeStore.changeCategory(cat)
+  } else {
+    await homeStore.getProducts()
+  }
   router.push({ name: 'home' })
 }
 </script>
+<style>
+.v-list-item__append .v-icon {
+  color: #f5b246;
+}
+</style>
